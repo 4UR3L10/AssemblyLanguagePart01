@@ -57,15 +57,15 @@ N:   .word  12             # size of array
       
       ######################################################################
       # PUT SWAP CODE HERE (IP3 Part 1)         
-      sll $s4, $s2, 2      # int i = 2 * 2 = 4       
-      addu $t1, $s0, $s4   # tempRAM = RAM + i
+      sll $t1, $s2, 2      # int i = 2 * 4 = 8       
+      addu $t1, $s0, $t1   # tempRAM = RAM + i
       lw $s4, 0($t1)       # tempOne = arr[i] 
                  
-      sll $s5, $s3, 2      # int j = 5 * 4 = 20
-      addu $t2, $s0, $s5   # tempRAMTwo = RAM + j     
-      lw $s5, 0($t2)       # tempTwo = arr[j]
+      sll $t2, $s3, 2      # int j = 5 * 4 = 20
+      addu $t2, $s0, $t2   # tempRAMTwo = RAM + j     
+      lw $t3, 0($t2)       # tempTwo = arr[j]
       
-      sw $s5, 0($t1)       # arr[i] = tempOne
+      sw $t3, 0($t1)       # arr[i] = tempOne
       sw $s4, 0($t2)       # arr[j] = tempTwo
       ######################################################################
       
