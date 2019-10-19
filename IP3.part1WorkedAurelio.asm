@@ -57,7 +57,7 @@ N:   .word  12             # size of array
       
       ######################################################################
       # PUT SWAP CODE HERE (IP3 Part 1)         
-      sll $s4, $s2, 2      # int i = 2 * 2 = 4       
+      sll $s4, $s2, 2      # int i = 2 * 4 = 8       
       addu $t1, $s0, $s4   # tempRAM = RAM + i
       lw $s4, 0($t1)       # tempOne = arr[i] 
                  
