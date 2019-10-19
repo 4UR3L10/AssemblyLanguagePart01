@@ -57,16 +57,16 @@ N:   .word  12             # size of array
       
       ######################################################################
       # PUT SWAP CODE HERE (IP3 Part 1)         
-      sll $s4, $s2, 2      # int i = 2 * 4 = 8       
-      addu $t1, $s0, $s4   # tempRAM = RAM + i
-      lw $s4, 0($t1)       # tempOne = arr[i] 
+      sll $t1, $s2, 2      # int tempI = 2 * i (Creates a temp register to get the index of i)      
+      addu $t1, $s0, $t1   # tempI = BaseRAM + tempI (Add the base RAM plus the index to get the exac location in RAM)
+      lw $s4, 0($t1)       # int variable = arr[i] 
                  
-      sll $s5, $s3, 2      # int j = 5 * 4 = 20
-      addu $t2, $s0, $s5   # tempRAMTwo = RAM + j     
-      lw $s5, 0($t2)       # tempTwo = arr[j]
+      sll $t2, $s3, 2      # int tempJ = 2 * j (Creates a temp register to get the index of j)
+      addu $t2, $s0, $t2   # tempJ = BaseRAM + tempJ (Add the base RAM plus the index to get the exac location in RAM)     
+      lw $t3, 0($t2)       # int temporary = arr[j]
       
-      sw $s5, 0($t1)       # arr[i] = tempOne
-      sw $s4, 0($t2)       # arr[j] = tempTwo
+      sw $t3, 0($t1)       # arr[i] = temporary (Saves the value of temporary variable in arr[i])
+      sw $s4, 0($t2)       # arr[j] = variable  (Saves the value of i in arr[j])
       ######################################################################
       
       ######################################################################
@@ -115,4 +115,3 @@ again: lw   $a0, 0($s0)      # load number for syscall
       addi $sp, $sp, 4      
       jr   $ra              # return
 ###########################################################################
-	
